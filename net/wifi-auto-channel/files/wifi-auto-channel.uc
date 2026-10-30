@@ -95,7 +95,7 @@ function get_survey(ifname) {
 			freq: si.frequency,
 			noise: si.noise ?? -100,
 			time: si.time ?? 0,
-			time_busy: si.time_busy ?? 0,
+			time_busy: si.time_busy ?? si.busy ?? 0,
 			time_rx: si.time_rx ?? 0,
 			time_tx: si.time_tx ?? 0,
 			in_use: si.in_use ?? false,
