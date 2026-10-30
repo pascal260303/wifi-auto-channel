@@ -58,9 +58,9 @@ function discover_radios() {
 		let ifaces = [];
 		for (let iface in (r.interfaces ?? [])) {
 			let ifname = iface.ifname;
-			if (ifname && match(ifname, /^phy\d/)) {
+			if (ifname) {
 				if (!phy)
-					phy = replace(ifname, /(-ap\d+|-sta\d+)$/, '');
+					phy = trim(fs.readfile(`/sys/class/net/${ifname}/phy80211/name`));
 				push(ifaces, ifname);
 			}
 		}
